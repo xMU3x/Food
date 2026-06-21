@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "buildCommand": "npm install",
+  "outputDirectory": ".",
+  "functions": {
+    "api/**/*.js": {
+      "includeFiles": "lib/**"
+    }
+  },
+  "headers": [
+    {
+      "source": "/service-worker.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache" },
+        { "key": "Service-Worker-Allowed", "value": "/" }
+      ]
+    },
+    {
+      "source": "/manifest.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/api/orders/save",   "destination": "/api/orders/save" },
+    { "source": "/api/orders/delete", "destination": "/api/orders/delete" },
+    { "source": "/api/orders/clear",  "destination": "/api/orders/clear" },
+    { "source": "/api/orders",        "destination": "/api/orders/index" },
+    { "source": "/api/menu/save",     "destination": "/api/menu/save" },
+    { "source": "/api/menu",          "destination": "/api/menu/index" },
+    { "source": "/api/prices/save",   "destination": "/api/prices/save" },
+    { "source": "/api/prices",        "destination": "/api/prices/index" }
+  ]
+}

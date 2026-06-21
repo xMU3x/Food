@@ -1,0 +1,14 @@
+{
+  "name": "food-order",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Food order app — Vercel deployment",
+  "scripts": {
+    "build": "echo 'No build step needed'",
+    "dev": "vercel dev"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
